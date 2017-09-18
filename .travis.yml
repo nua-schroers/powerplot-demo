@@ -1,7 +1,15 @@
-# This is actually a Swift-project.
+# This is an Objective-C project.
 language: objective-c
-osx_image: xcode7.3
-xcode_sdk: iphonesimulator9.3
-xcode_project: DemoApp/DemoApp.xcodeproj
-xcode_scheme: DemoApp
+osx_image: xcode8.2
+
+before_install:
+- xcrun simctl list # list devices
+
+install:
+- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+- carthage update --platform iOS
+
+script:
+- set -o pipefail
+- xcodebuild -project DemoApp/DemoApp.xcodeproj -scheme DemoApp build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO "platform=iOS Simulator,OS=10.1,name=iPhone SE" clean build | xcpretty -c || true
 
