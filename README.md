@@ -12,7 +12,7 @@ demo data used throughout the app.
 ## Installation
 
 The PowerPlot demo app requires the
-[PowerPlot](https://github.com/nua-schroers/powerplot)] framework
+[PowerPlot](https://github.com/nua-schroers/powerplot) framework
 which is installed using
 [Carthage](https://github.com/Carthage/Carthage). In order to do the
 setup, run
